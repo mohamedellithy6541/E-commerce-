@@ -1,1 +1,9 @@
-<Solution />
+<Solution>
+  <Folder Name="/Services/" />
+  <Folder Name="/Services/catalog/">
+    <Project Path="catalog.InfratStructure/catalog.InfratStructure.csproj" />
+    <Project Path="Services/catalog/catalog.API/catalog.API.csproj" />
+    <Project Path="services/catalog/catalog.Application/catalog.Application.csproj" />
+    <Project Path="services/catalog/catalog.Core/catalog.Core.csproj" />
+  </Folder>
+</Solution>
