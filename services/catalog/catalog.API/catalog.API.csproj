@@ -20,8 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\catalog.InfratStructure\catalog.InfratStructure.csproj" />
+    <ProjectReference Include="..\..\..\catalog.InfratStructure\catalog.InfraStructure.csproj" />
     <ProjectReference Include="..\catalog.Application\catalog.Application.csproj" />
+    <ProjectReference Include="..\catalog.Infrastructure\catalog.InfraStructure.csproj" />
   </ItemGroup>
 
 </Project>

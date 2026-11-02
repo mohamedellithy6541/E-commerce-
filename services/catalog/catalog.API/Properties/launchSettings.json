@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "http": {
+    "catalog.API": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5013",
+      "applicationUrl": "http://localhost:8001",
       "launchBrowser": true,
       "launchUrl": "swagger"
     },
