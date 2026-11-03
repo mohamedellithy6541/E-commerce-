@@ -10,4 +10,10 @@
     <ProjectReference Include="..\catalog.Core\catalog.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Handler\" />
+    <Folder Include="Quaries\" />
+  </ItemGroup>
+
 </Project>
