@@ -13,7 +13,7 @@ namespace catalog.Core.Repository
         Task<Product> GetProductById(string id);
         Task<IEnumerable<Product>> GetProductsByName(string Name);
         Task<IEnumerable<Product>> GetProductsByBrandName(string Name);
-        Task<bool> CreatProduct(Product product);
+        Task<Product> CreatProduct(Product product);
         Task<bool> UpdateProduct(string Id);
     }
 }
