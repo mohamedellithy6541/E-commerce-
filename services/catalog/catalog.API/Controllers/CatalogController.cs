@@ -8,11 +8,21 @@ namespace catalog.API.Controllers
 {
     public class CatalogController : BaseApiController
     {
+        #region Prop
         private readonly IMediator _mediator;
+
+        #endregion
+
+        #region Ctor
         public CatalogController(IMediator mediator)
         {
             _mediator = mediator;
         }
+
+        #endregion
+
+        #region Methods
+
         [HttpGet]
         [Route("[action]/{id}", Name = "Products")]
         public async Task<ActionResult<ProductResponseDto>> GetProduct(string id)
@@ -21,6 +31,7 @@ namespace catalog.API.Controllers
             var result = await _mediator.Send(product);
             return Ok(result);
         }
+
         [HttpGet]
         [Route("[action]/{name}", Name = "ProductesBynames")]
         public async Task<ActionResult<IList<ProductResponseDto>>> GetProductByName(string name)
@@ -46,6 +57,7 @@ namespace catalog.API.Controllers
             var result = await _mediator.Send<ProductResponseDto>(createProductCommand);
             return Ok(result);
         }
+        
         [HttpPut]
         [Route("", Name = "UpdateProduct")]
         public async Task<ActionResult<bool>> UpdateProduct([FromBody] UpdateProductCommand updateProductCommand)
@@ -53,6 +65,7 @@ namespace catalog.API.Controllers
             var result = await _mediator.Send<bool>(updateProductCommand);
             return Ok(result);
         }
+        
         [HttpDelete]
         [Route("{id}", Name = "DeleteProduct")]
         public async Task<ActionResult<bool>> DeleteProduct(string id)
@@ -60,6 +73,8 @@ namespace catalog.API.Controllers
             var deleteProductCommand = new DeleteProductCommand(id);
             var result = await _mediator.Send<bool>(deleteProductCommand);
             return Ok(result);
-        }
+        } 
+
+        #endregion
     }
 }
