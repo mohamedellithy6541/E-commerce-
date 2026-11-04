@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace catalog.Application.Handler
+namespace catalog.Application.Handler.Queries
 {
     public class GetAllBrandsHandler : IRequestHandler<GetAllBrandsQuery, IList<BrandResponseDto>>
     {

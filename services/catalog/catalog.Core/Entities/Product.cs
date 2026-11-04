@@ -12,7 +12,7 @@ namespace catalog.Core.Entities
         public string Name { get; set; }
 
         public string Description  { get; set; }
-        public string summary  { get; set; }
+        public string Summary  { get; set; }
         public string ImageFile  { get; set; }
 
         [BsonRepresentation(MongoDB.Bson.BsonType.Decimal128)]
