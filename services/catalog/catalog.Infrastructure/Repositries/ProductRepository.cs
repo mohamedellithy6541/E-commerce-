@@ -2,11 +2,6 @@
 using catalog.Core.Repository;
 using catalog.InfratStructure.Data.Context;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace catalog.InfraStructure.Repositries
 {
@@ -26,6 +21,8 @@ namespace catalog.InfraStructure.Repositries
 
         public async Task<IEnumerable<ProductBrand>> GetAllBrands()
          => await _context.productBrands.Find(p => true).ToListAsync();
+
+     
 
         public async Task<IEnumerable<Product>> GetAllProducts()
             => await _context.products.Find(p => true).ToListAsync();
@@ -47,7 +44,7 @@ namespace catalog.InfraStructure.Repositries
             if (product == null)
                 return false;
             var updated = await _context.products.ReplaceOneAsync(p => p.Id == Id, product);
-           
+
             return updated.IsAcknowledged && updated.ModifiedCount > 0;
         }
     }

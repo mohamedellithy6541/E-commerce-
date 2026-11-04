@@ -12,10 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Commands\" />
-    <Folder Include="Handler\" />
-    <Folder Include="Mappers\" />
-    <Folder Include="Responses\" />
-    <Folder Include="Quaries\" />
   </ItemGroup>
 
   <ItemGroup>

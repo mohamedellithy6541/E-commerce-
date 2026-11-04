@@ -1,10 +1,5 @@
 ﻿using catalog.Core.Entities;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace catalog.InfratStructure.Data.Context
 {
@@ -27,7 +22,7 @@ namespace catalog.InfratStructure.Data.Context
             var filePath = Path.Combine("Data/SeedData/brands.json");
             if (!File.Exists(filePath))
             {
-                Console.WriteLine($"File not found: {filePath}" );
+                Console.WriteLine($"File not found: {filePath}");
             }
             return File.ReadAllText(filePath);
         }
