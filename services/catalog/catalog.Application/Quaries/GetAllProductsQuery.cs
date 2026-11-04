@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace catalog.Application.Quaries
 {
-    public class GetAllPeeoductQuery : IRequest<IList<ProductResponseDto>>
+    public class GetAllProductsQuery : IRequest<IList<ProductResponseDto>>
     {
     }
 }

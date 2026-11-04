@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace catalog.Application.Handler.Queries
 {
-    public class GetAllProductsHandler : IRequestHandler<GetAllPeeoductQuery, IList<ProductResponseDto>>
+    public class GetAllProductsHandler : IRequestHandler<GetAllProductsQuery, IList<ProductResponseDto>>
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
@@ -21,7 +21,7 @@ namespace catalog.Application.Handler.Queries
             _productRepository = productRepository;
             _mapper = mapper;
         }
-        public async Task<IList<ProductResponseDto>> Handle(GetAllPeeoductQuery request, CancellationToken cancellationToken)
+        public async Task<IList<ProductResponseDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var products = await _productRepository.GetAllProducts();
             var productDtos =  _mapper.Map<IList<ProductResponseDto>>(products.ToList());

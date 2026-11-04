@@ -24,7 +24,7 @@ namespace catalog.InfratStructure.Data.Context
 
         private static string GetPreconfiguredBrands()
         {
-            var filePath = Path.Combine("Data/SeedData/products.json");
+            var filePath = Path.Combine("Data", "SeedData", "products.json");
             if (!File.Exists(filePath))
             {
                 Console.WriteLine($"File not found: {filePath}");
