@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace catalog.Application.Quaries
 {
-    public class GetProductByNameQuery :IRequest<ProductResponseDto>
+    public class GetProductByNameQuery :IRequest<BrandResponseDto>
     {
         public string Name { get; set; }
         public GetProductByNameQuery(string name)

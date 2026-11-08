@@ -25,13 +25,14 @@ namespace catalog.Application.Handler.Commands
         { 
             var existingProduct = await _productRepository.GetProductById(request.Id);
             var product = _mapper.Map<Product>(request);
-            var productUpdated = await _productRepository.UpdateProduct(new Product() 
+            var productUpdated = await _productRepository.UpdateProduct(new Product()
             {
-                Id   = request.Id,
+                Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
                 Summary = request.Summary,
                 ImageFile = request.ImageFile,
+                Price = request.price,
                 Brand = request.Brand,
                 Type = request.Type
             });

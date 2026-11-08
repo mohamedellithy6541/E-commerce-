@@ -3,7 +3,7 @@ using catalog.Application.Mappers;
 using catalog.Application.Quaries;
 using catalog.Core.Repository;
 using catalog.Infrastructure.Data.Context;
-using catalog.InfraStructure.Repositries;
+using catalog.Infrastructure.Repositries;
 using catalog.InfratStructure.Data.Context;
 using System.Reflection;
 
@@ -32,8 +32,8 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddAutoMapper(typeof(ProductMappingProfile).Assembly);
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(
-    Assembly.GetExecutingAssembly(), 
-    Assembly.GetAssembly(typeof(GetProductByIdQuery)) ));
+    Assembly.GetExecutingAssembly(),
+    Assembly.GetAssembly(typeof(GetProductByIdQuery))));
 
 //builder.Services.AddMediatR(cfg =>
 //    cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
@@ -54,7 +54,7 @@ builder.Services.AddApiVersioning(options =>
 {
     options.GroupNameFormat = "'v'V";
     options.SubstituteApiVersionInUrl = true;
-}); 
+});
 
 
 var app = builder.Build();

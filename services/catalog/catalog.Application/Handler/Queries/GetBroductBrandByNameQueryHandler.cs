@@ -23,10 +23,10 @@ namespace catalog.Application.Handler.Queries
         }
 
         public async Task<IList<BrandResponseDto>> Handle(GetBroductBrandByNameQuery request, CancellationToken cancellationToken)
-        { 
-            var brand = await _productRepository.GetProductsByBrandName(request.Name);
-            var brandNameResponse = _mapper.Map<IList<BrandResponseDto>>(brand.ToList());
-            return brandNameResponse;
+        {
+            var products = await _productRepository.GetProductsByName(request.Name);
+            return _mapper.Map<IList<BrandResponseDto>>(products);   // ✅
+          
         }
     }
 }

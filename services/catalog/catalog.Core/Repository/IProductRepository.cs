@@ -1,4 +1,5 @@
 ﻿using catalog.Core.Entities;
+using catalog.Core.Specs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace catalog.Core.Repository
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Product>> GetAllProducts();
+        Task<Pagination<Product>> GetAllProducts(CatalogSpecParms catalogSpecParms);
         Task<Product> GetProductById(string id);
         Task<IEnumerable<Product>> GetProductsByName(string Name);
-        Task<IEnumerable<Product>> GetProductsByBrandName(string Name);
+        Task<IEnumerable<ProductBrand>> GetBrandByName(string Name);
         Task<Product> CreatProduct(Product product);
         Task<bool> UpdateProduct(Product product);
         Task<bool> DeleteProduct(Product product);

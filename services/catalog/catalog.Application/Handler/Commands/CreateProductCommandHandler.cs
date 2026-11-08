@@ -20,12 +20,15 @@ namespace catalog.Application.Handler.Commands
         public CreateProductCommandHandler(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
         public async Task<ProductResponseDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
             var product = _mapper.Map<Product>(request);
-            var createdProduct =await _productRepository.CreatProduct(product);
-            return _mapper.Map<ProductResponseDto>(createdProduct);
+            var createdProduct = await _productRepository.CreatProduct(product);
+            var result = _mapper.Map<ProductResponseDto>(createdProduct);
+            return result;
         }
+
     }
 }

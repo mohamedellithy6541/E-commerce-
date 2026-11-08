@@ -1,8 +1,10 @@
 ﻿using catalog.Application.Commands;
 using catalog.Application.Quaries;
 using catalog.Application.Responses;
+using catalog.Core.Specs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace catalog.API.Controllers
 {
@@ -32,20 +34,19 @@ namespace catalog.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        [Route("[action]/{name}", Name = "ProductesBynames")]
+        [HttpGet("GetProductByName/{name}")]
+        [ProducesResponseType(typeof(IList<ProductResponseDto>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IList<ProductResponseDto>>> GetProductByName(string name)
         {
-            var productByName = new GetProductByNameQuery(name);
-            var result = await _mediator.Send(productByName);
+            var result = await _mediator.Send(new GetProductByNameQuery(name));
             return Ok(result);
         }
 
         [HttpGet]
         [Route("", Name = "GetAllProducts")]
-        public async Task<ActionResult<ProductResponseDto>> GetAllProducts()
+        public async Task<ActionResult<ProductResponseDto>> GetAllProducts([FromQuery] CatalogSpecParms catalogSpecParms)
         {
-            var products = new GetAllProductsQuery();
+            var products = new GetAllProductsQuery(catalogSpecParms);
             var result = await _mediator.Send(products);
             return Ok(result);
         }
@@ -57,7 +58,7 @@ namespace catalog.API.Controllers
             var result = await _mediator.Send<ProductResponseDto>(createProductCommand);
             return Ok(result);
         }
-        
+
         [HttpPut]
         [Route("", Name = "UpdateProduct")]
         public async Task<ActionResult<bool>> UpdateProduct([FromBody] UpdateProductCommand updateProductCommand)
@@ -65,7 +66,7 @@ namespace catalog.API.Controllers
             var result = await _mediator.Send<bool>(updateProductCommand);
             return Ok(result);
         }
-        
+
         [HttpDelete]
         [Route("{id}", Name = "DeleteProduct")]
         public async Task<ActionResult<bool>> DeleteProduct(string id)
@@ -73,7 +74,24 @@ namespace catalog.API.Controllers
             var deleteProductCommand = new DeleteProductCommand(id);
             var result = await _mediator.Send<bool>(deleteProductCommand);
             return Ok(result);
-        } 
+        }
+
+        [HttpGet]
+        [Route("GetAllbBrands", Name = "GetAllbBrands")]
+        public async Task<ActionResult<BrandResponseDto>> GetAllBrands()
+        {
+            GetAllBrandsQuery brands = new GetAllBrandsQuery();
+            var result = await _mediator.Send(brands);
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("GetAllTypes", Name = "GetAllTypes")]
+        public async Task<ActionResult<ProductTypeResponseDto>> GetAllTypes()
+        {
+            GetAllProductTypesQuery types = new GetAllProductTypesQuery();
+            var result = await _mediator.Send(types);
+            return Ok(result);
+        }
 
         #endregion
     }
