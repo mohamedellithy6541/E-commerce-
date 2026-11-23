@@ -12,13 +12,13 @@ namespace Discount.Infrastructure.Repositories
 
         public DiscountRepository(IConfiguration configuration)
         {
-            _configuration = configuration;     
+            _configuration = configuration;
         }
         public async Task<Coupon> GetDiscount(string productName)
         {
-           await  using var connectionString = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+            await using var connectionString = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
             var coupon = await connectionString.
-                QueryFirstOrDefaultAsync<Coupon>("SELECT * FROM Coupon WHERE ProductName = @ProductName", 
+                QueryFirstOrDefaultAsync<Coupon>("SELECT * FROM Coupon WHERE ProductName = @ProductName",
                 new { ProductName = productName });
             if (coupon == null)
             {
@@ -57,11 +57,13 @@ namespace Discount.Infrastructure.Repositories
                 " Amount = @Amount " +
                 "WHERE Id = @Id",
 
-                new { 
-                    ProductName = coupon.ProductName, 
-                    Description = coupon.Description, 
+                new
+                {
+                    ProductName = coupon.ProductName,
+                    Description = coupon.Description,
                     Amount = coupon.Amount,
-                    Id = coupon.Id });
+                    Id = coupon.Id
+                });
 
             return affected > 0;
 
