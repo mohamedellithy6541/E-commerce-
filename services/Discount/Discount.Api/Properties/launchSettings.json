@@ -1,20 +1,12 @@
 {
   "profiles": {
-    "http": {
+    "Disount.API": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5033"
-    },
-    "https": {
-      "commandName": "Project",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7100;http://localhost:5033"
+      "applicationUrl": "http://localhost:8002"
     },
     "Container (Dockerfile)": {
       "commandName": "Docker",
